@@ -42,3 +42,10 @@ app.get("/", function (req, res) {
 5. Add html boilerplate to main.handlebars
 6. Add ```{{{ body }}}``` to main.handlebars
 7. Test by running ```npm run start```
+
+### Housekeeping
+1. Create a dev script so I can run ```npm run dev```: in package.json
+2. Add my .eslintrc.json and .eslintignore files
+3. Create a script to run eslint: ```npm run lint``` in package.json, should execute the following: ```eslint **/*.js --quiet```
+4. Modify our test script to run the linter ```npm run lint```
+5. Test this by running ```npm run lint```
