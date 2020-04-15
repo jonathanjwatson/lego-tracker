@@ -12,7 +12,7 @@
 
 1. ```touch server.js```
 2. ```npm init -y```
-3. ```npm install express sequelize mysql2 eslint```
+3. ```npm install express sequelize mysql2```
 4. Copy/paste server.js boilerplate
 5. Test the server by running ```npm run start```
 
@@ -46,6 +46,10 @@ app.get("/", function (req, res) {
 ### Housekeeping
 1. Create a dev script so I can run ```npm run dev```: in package.json
 2. Add my .eslintrc.json and .eslintignore files
-3. Create a script to run eslint: ```npm run lint``` in package.json, should execute the following: ```eslint **/*.js --quiet```
-4. Modify our test script to run the linter ```npm run lint```
-5. Test this by running ```npm run lint```
+3. Run ```npm install eslint@4.19.1```
+4. Create a script to run eslint: ```npm run lint``` in package.json, should execute the following: ```eslint **/*.js --quiet```
+5. Modify our test script to run the linter ```npm run lint```
+6. Test this by running ```npm run lint```
+7. Incorporate Travis CI by writing your .travis.yml file
+8. Update your /config/config.json with the .travis.yml test database name.
+9. Secure the master branch and test Travis CI Integration
