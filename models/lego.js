@@ -3,6 +3,7 @@ module.exports = function (sequelize, DataTypes) {
     name: DataTypes.STRING,
     numberOfPieces: DataTypes.INTEGER,
     setNumber: DataTypes.INTEGER,
+    imageURL: DataTypes.STRING,
     quantity: {
       type: DataTypes.INTEGER,
       defaultValue: 1,
