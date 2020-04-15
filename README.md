@@ -63,4 +63,5 @@ app.get("/", function (req, res) {
        - [ ] Require branches to be up to date before merging
        - [ ] Travis CI - Branch
     e. Test Travis CI by creating a new branch and opening a Pull Request
+![Travis CI in Github](images/TravisCI-Pull-Request.png)
     
