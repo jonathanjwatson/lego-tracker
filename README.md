@@ -61,5 +61,6 @@ app.get("/", function (req, res) {
        - [ ] Require pull request reviews before merging
        - [ ] Require status checks to pass before merging
        - [ ] Require branches to be up to date before merging
+       - [ ] Travis CI - Branch
     e. Test Travis CI by creating a new branch and opening a Pull Request
     
