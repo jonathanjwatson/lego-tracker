@@ -19,9 +19,11 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-// const catRoutes = require("./controllers/catsController.js");
+const userRoutes = require("./controllers/userController.js");
+const legoRoutes = require("./controllers/legoController.js");
 
-// app.use(catRoutes);
+app.use(userRoutes);
+app.use(legoRoutes);
 
 app.get("/", function (req, res) {
   res.render("index");
@@ -33,7 +35,7 @@ app.get("/api/config", function (req, res) {
   });
 });
 
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
     console.log(`Server listening on: http://localhost:${PORT}`);
   });
