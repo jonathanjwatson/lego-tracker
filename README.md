@@ -53,3 +53,13 @@ app.get("/", function (req, res) {
 7. Incorporate Travis CI by writing your .travis.yml file
 8. Update your /config/config.json with the .travis.yml test database name.
 9. Secure the master branch and test Travis CI Integration
+    a. Navigate to Settings -> Branches
+    b. Under Branch Protection Rules, select "Add rule"
+    c. Branch name pattern: master
+    d. Select the following items
+    
+       - [ ] Require pull request reviews before merging
+       - [ ] Require status checks to pass before merging
+       - [ ] Require branches to be up to date before merging
+    e. Test Travis CI by creating a new branch and opening a Pull Request
+    
