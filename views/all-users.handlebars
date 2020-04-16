@@ -1,12 +1,24 @@
 <h1>These are all the users that exist in the database.</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">ID</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
 
-{{#each users}}
-<h3>User Name: {{username}}</h3>
-<ul>
-    <li>ID: {{id}}</li>
-    <li>Email: {{email}}</li>
-    <li>First Name: {{firstName}}</li>
-    <li>Last Name: {{lastName}}</li>
-    <li>Account Last Updated: {{updatedAt}}</li>
-</ul>
-{{/each}}
+        {{#each users}}
+        <tr>
+            <th scope="row">{{username}}</th>
+            <td>{{id}}</td>
+            <td>{{email}}</td>
+            <td>{{firstName}}</td>
+            <td>{{lastName}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

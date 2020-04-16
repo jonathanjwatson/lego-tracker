@@ -19,6 +19,30 @@ router.get("/users", function (req, res) {
     });
 });
 
+router.get("/users/:id", function (req, res) {
+  db.User.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: db.Lego,
+      },
+    ],
+  })
+    .then((user) => {
+      console.log(user.Legos);
+      res.render("single-user", { user, legos: user.Legos });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+      res.json({
+        error: true,
+      });
+    });
+});
+
 router.get("/api/users", function (req, res) {
   db.User.findAll()
     .then((users) => {

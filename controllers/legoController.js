@@ -39,6 +39,7 @@ router.get("/api/legos/:id", function (req, res) {
     where: {
       id: req.params.id,
     },
+    include: [{ model: db.User }],
   })
     .then((lego) => {
       console.log(lego);
