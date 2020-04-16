@@ -1,25 +1,24 @@
-<h1>{{user.username}}'s Lego Sets</h1>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Set Name</th>
-            <th scope="col">ID</th>
-            <th scope="col">Number of Pieces</th>
-            <th scope="col">Set Number</th>
-            <th scope="col">Image URL</th>
-        </tr>
-    </thead>
-    <tbody>
-
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{user.username}}'s Lego Sets</h1>
+        </div>
+    </div>
+    <div class="row">
         {{#each legos}}
-        <tr>
-            <th scope="row">{{name}}</th>
-            <td>{{id}}</td>
-            <td>{{numberOfPieces}}</td>
-            <td>{{setNumber}}</td>
-            <td>{{imageURL}}</td>
-        </tr>
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+                <img src={{imageURL}} class="card-img-top" alt="{{name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">
+                        <strong>Set:</strong> {{setNumber}}
+                        <br />
+                        <strong>Pieces:</strong> {{numberOfPieces}}
+                    </p>
+                </div>
+            </div>
+        </div>
         {{/each}}
-    </tbody>
-</table>
+    </div>
+</div>
