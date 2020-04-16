@@ -19,6 +19,10 @@ router.get("/users", function (req, res) {
     });
 });
 
+router.get("/users/new", function (req, res) {
+  res.render("new-user");
+});
+
 router.get("/users/:id", function (req, res) {
   db.User.findOne({
     where: {
@@ -75,6 +79,30 @@ router.get("/api/users/:id", function (req, res) {
         error: true,
       });
     });
+});
+
+router.post("/api/users", function (req, res) {
+  const newUser = {
+    username: req.body.username.trim(),
+    email: req.body.email.trim(),
+    password: req.body.password.trim(),
+    firstName: req.body.firstName.trim(),
+    lastName: req.body.lastName.trim(),
+  };
+  db.User.create(newUser)
+    .then((newUser) => {
+      console.log(newUser);
+      res.json({
+        message: "Successfully created new user",
+        success: true,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  // read the req.body
+  // create the new user
+  // send a message back to the front
 });
 
 module.exports = router;

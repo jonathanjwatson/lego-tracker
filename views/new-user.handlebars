@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            My New User form
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-success" role="alert" id="user-creation-alert" style="display:none">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form id="new-user-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password">
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+
+    $("#new-user-form").on("submit", function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: "/api/users",
+            method: "POST",
+            data: {
+                username: $("#username").val(),
+                email: $("#email").val(),
+                password: $("#password").val(),
+                firstName: $("#firstName").val(),
+                lastName: $("#lastName").val(),
+            }
+        }).done(function (response) {
+            console.log(response);
+            if (response.success) {
+                $("#user-creation-alert").text(response.message + ". Redirecting in 5 seconds . . .");
+                $("#user-creation-alert").show();
+                $("#username").val("")
+                $("#email").val("")
+                $("#password").val("")
+                $("#firstName").val("")
+                $("#lastName").val("")
+                setTimeout(function () { window.location.replace("/users"); }, 5000);
+            }
+        })
+    });
+</script>
