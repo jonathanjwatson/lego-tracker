@@ -1,12 +1,21 @@
-<h1>This is all the lego that exists in the database</h1>
-
-{{#each legos}}
-<h3>Name: {{name}}</h3>
-<ul>
-    <li>ID: {{id}}</li>
-    <li>Number of Pieces: {{numberOfPieces}}</li>
-    <li>Set Number: {{setNumber}}</li>
-    <li>Set Last Updated: {{updatedAt}}</li>
-</ul>
-<img src={{imageURL}} alt={{name}} style="width: 10%">
-{{/each}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>This is all the lego that exists in the database</h1>
+        </div>
+    </div>
+    <div class="row">
+        {{#each legos}}
+        <div class="col-sm-4">
+            <h3>{{name}}</h3>
+            <ul>
+                <li>ID: {{id}}</li>
+                <li>Number of Pieces: {{numberOfPieces}}</li>
+                <li>Set Number: {{setNumber}}</li>
+                <li>Set Last Updated: {{updatedAt}}</li>
+            </ul>
+            <img src={{imageURL}} alt={{name}} style="width: 100%">
+        </div>
+        {{/each}}
+    </div>
+</div>
