@@ -100,9 +100,36 @@ router.post("/api/users", function (req, res) {
     .catch((err) => {
       console.log(err);
     });
-  // read the req.body
-  // create the new user
-  // send a message back to the front
+});
+
+router.delete("/api/users/:id", function (req, res) {
+  db.User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((numberOfDestroyedRows) => {
+      console.log(numberOfDestroyedRows);
+      if (numberOfDestroyedRows === 1) {
+        res.json({
+          success: true,
+          message: `Successfully deleted user: ${req.params.id}`,
+        });
+      } else {
+        res.status(500);
+        res.json({
+          success: false,
+          message: `A problem occurred deleting user: ${req.params.id}`,
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+      res.json({
+        success: false,
+      });
+    });
 });
 
 module.exports = router;

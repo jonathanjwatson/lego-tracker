@@ -14,6 +14,8 @@
                         <th scope="col">Email Address</th>
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +27,8 @@
                         <td>{{email}}</td>
                         <td>{{firstName}}</td>
                         <td>{{lastName}}</td>
+                        <td><a href="/users/{{id}}"><button class="btn btn-primary btn-sm">View</button></a></td>
+                        <td><button class="btn btn-danger btn-sm delete-user" data-id={{{id}}}>Delete</button></td>
                     </tr>
                     {{/each}}
                 </tbody>
@@ -37,3 +41,23 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(".delete-user").on("click", function (event) {
+        const confirmDelete = confirm("Are you sure you want to delete the user?");
+        if (confirmDelete) {
+            console.log($(this).data("id"))
+            const idToDelete = $(this).data("id");
+            $.ajax({
+                url: `/api/users/${idToDelete}`,
+                method: "DELETE"
+            }).done((response) => {
+                console.log(response);
+                if (response.success) {
+                    alert(response.message);
+                    location.reload();
+                }
+            })
+        }
+    })
+</script>
