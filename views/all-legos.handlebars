@@ -7,15 +7,26 @@
     <div class="row">
         {{#each legos}}
         <div class="col-sm-4">
-            <h3>{{name}}</h3>
-            <ul>
-                <li>ID: {{id}}</li>
-                <li>Number of Pieces: {{numberOfPieces}}</li>
-                <li>Set Number: {{setNumber}}</li>
-                <li>Set Last Updated: {{updatedAt}}</li>
-            </ul>
-            <img src={{imageURL}} alt={{name}} style="width: 100%">
+            <div class="card" style="width: 18rem; min-height: 450px">
+                <img src={{imageURL}} class="card-img-top" alt="{{name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">
+                        <strong>Set:</strong> {{setNumber}}
+                        <br />
+                        <strong>Pieces:</strong> {{numberOfPieces}}
+                    </p>
+                    <button class="btn btn-primary">Add to my collection</button>
+                </div>
+            </div>
         </div>
         {{/each}}
     </div>
 </div>
+
+<script type="text/javascript">
+// add a listener for the button
+// get the id of the user we want to assign it to
+// get the id of the lego set we want to assign it to
+// POST ajax
+</script>
