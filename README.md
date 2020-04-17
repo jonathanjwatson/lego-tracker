@@ -65,3 +65,12 @@ app.get("/", function (req, res) {
     e. Test Travis CI by creating a new branch and opening a Pull Request
 ![Travis CI in Github](images/TravisCI-Pull-Request.png)
     
+## To Deploy to Heroku
+Modify your config/config.json file as follows: 
+
+```json
+"production": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  }
+  ```
