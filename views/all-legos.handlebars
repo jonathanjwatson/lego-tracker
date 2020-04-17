@@ -16,7 +16,8 @@
                         <br />
                         <strong>Pieces:</strong> {{numberOfPieces}}
                     </p>
-                    <button class="btn btn-primary">Add to my collection</button>
+                    <button class="btn btn-primary add-to-collection" data-id="{{id}}">Add to my
+                        collection</button>
                 </div>
             </div>
         </div>
@@ -25,8 +26,21 @@
 </div>
 
 <script type="text/javascript">
-// add a listener for the button
-// get the id of the user we want to assign it to
-// get the id of the lego set we want to assign it to
-// POST ajax
+    $(".add-to-collection").on("click", function () {
+        console.log($(this).data("id"));
+        console.log(localStorage.getItem("currentUser"));
+        $.ajax({
+            method: "POST",
+            url: "/api/userLegos",
+            data: {
+                userId: localStorage.getItem("currentUser"),
+                legoId: $(this).data("id")
+            }
+        }).done(response => {
+            console.log(response);
+            if (response.success) {
+                alert(response.message);
+            }
+        })
+    })
 </script>
