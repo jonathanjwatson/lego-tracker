@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const PORT = process.env.PORT || 3000;
 
@@ -47,5 +48,6 @@ app.get("/api/config", function (req, res) {
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
     console.log(`Server listening on: http://localhost:${PORT}`);
+    console.log(process.env);
   });
 });
