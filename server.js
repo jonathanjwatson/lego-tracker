@@ -45,6 +45,28 @@ app.get("/api/config", function (req, res) {
   });
 });
 
+app.post("/api/userLegos", function (req, res) {
+  console.log(req.body);
+  db.UserLegos.create({
+    userId: req.body.userId,
+    legoId: req.body.legoId,
+  })
+    .then((newEntry) => {
+      res.json({
+        success: true,
+        message: "Successfully added to your collection.",
+        data: newEntry,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+      res.json({
+        success: false,
+      });
+    });
+});
+
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
     console.log(`Server listening on: http://localhost:${PORT}`);

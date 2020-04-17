@@ -35,6 +35,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/legos">Sets</a>
                 </li>
+                <li class="nav-item">
+                    <select id='user-dropdown'>
+                        <option value=null>Select a User</option>
+                    </select>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -43,6 +48,26 @@
         </div>
     </nav>
     {{{ body }}}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                method: "GET",
+                url: "/api/users"
+            }).done(result => {
+                console.log(result);
+                let selectorEl = $("#user-dropdown");
+                for (let i = 0; i < result.length; i++) {
+                    selectorEl.append(`<option value="${result[i].id}">${result[i].username}</option>`)
+                }
+            })
+
+            $("#user-dropdown").on("change", (event) => {
+                console.log(event.target.value);
+                localStorage.setItem('currentUser', event.target.value);
+            })
+        })
+    </script>
 </body>
 
 </html>
