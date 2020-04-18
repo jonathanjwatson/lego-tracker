@@ -5,6 +5,10 @@
         </div>
     </div>
     <div class="row">
+        <button id="show-lego">Show Lego</button>
+        <button id="show-stamps">Show Stamps</button>
+    </div>
+    <div class="row" id="legos">
         {{#each legos}}
         <div class="col-sm-4">
             <div class="card" style="width: 18rem;">
@@ -21,4 +25,33 @@
         </div>
         {{/each}}
     </div>
+    <div class="row" id="stamps">
+        {{#each stamps}}
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+                <img src={{imageURL}} class="card-img-top" alt="{{name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">
+                        <strong>Set:</strong> {{setNumber}}
+                        <br />
+                        <strong>Pieces:</strong> {{numberOfPieces}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>
+
+<script>
+    $("#show-lego").on("click", function () {
+        $("#stamps").hide();
+        $("#legos").show();
+    })
+
+    $("#show-stamps").on("click", function () {
+        $("#stamps").show();
+        $("#legos").hide();
+    })
+</script>

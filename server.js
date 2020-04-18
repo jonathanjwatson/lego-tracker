@@ -31,9 +31,11 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them.
 const userRoutes = require("./controllers/userController.js");
 const legoRoutes = require("./controllers/legoController.js");
+const searchRoutes = require("./controllers/searchController.js");
 
 app.use(userRoutes);
 app.use(legoRoutes);
+app.use(searchRoutes);
 
 app.get("/", function (req, res) {
   res.render("index");

@@ -36,7 +36,11 @@ router.get("/users/:id", function (req, res) {
   })
     .then((user) => {
       console.log(user.Legos);
-      res.render("single-user", { user, legos: user.Legos });
+      res.render("single-user", {
+        user,
+        legos: user.Legos,
+        stamps: [user.Legos[0]],
+      });
     })
     .catch((err) => {
       console.log(err);

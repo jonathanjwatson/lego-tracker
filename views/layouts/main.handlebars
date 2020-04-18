@@ -42,8 +42,9 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    id="lego-search-bar">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="lego-search-button">Search</button>
             </form>
         </div>
     </nav>
@@ -66,6 +67,15 @@
                 console.log(event.target.value);
                 localStorage.setItem('currentUser', event.target.value);
             })
+        })
+    </script>
+    <script>
+        $("#lego-search-button").on("click", function (event) {
+            event.preventDefault();
+            console.log("search button");
+            const searchTerm = $("#lego-search-bar").val();
+            console.log(searchTerm);
+            window.location.replace(`/search/${searchTerm}`);
         })
     </script>
 </body>
