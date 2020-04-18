@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>This is all the lego that we found with search term: {{searchTerm}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        {{#each legos}}
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem; min-height: 450px">
+                <img src={{set_img_url}} class="card-img-top" alt="{{name}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">
+                        <strong>Set:</strong> {{set_num}}
+                        <br />
+                        <strong>Pieces:</strong> {{num_parts}}
+                    </p>
+                    <button class="btn btn-dark new-lego-request" data-name="{{name}}"" data-set-number=" {{set_num}}"
+                        data-number-of-pieces="{{num_parts}}" data-image-url={{set_img_url}}>Add to Database</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(".new-lego-request").on("click", function () {
+        console.log("You requested adding a new lego");
+        console.log($(this));
+        const newLegoObject = {
+            name: $(this).data("name"),
+            setNumber: $(this).data("set-number"),
+            numberOfPieces: $(this).data("number-of-pieces"),
+            imageURL: $(this).data("image-url")
+        }
+        console.log(newLegoObject);
+        $.ajax({
+            method: "POST",
+            url: "/api/legos",
+            data: newLegoObject
+        }).done(response => {
+            console.log(response);
+        })
+    })
+</script>

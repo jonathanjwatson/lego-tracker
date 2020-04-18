@@ -22,6 +22,7 @@
   "homepage": "https://github.com/jonathanjwatson/lego-tracker#readme",
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.3",
+    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "eslint": "^4.19.1",
     "express": "^4.17.1",

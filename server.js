@@ -31,9 +31,11 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them.
 const userRoutes = require("./controllers/userController.js");
 const legoRoutes = require("./controllers/legoController.js");
+const searchRoutes = require("./controllers/searchController.js");
 
 app.use(userRoutes);
 app.use(legoRoutes);
+app.use(searchRoutes);
 
 app.get("/", function (req, res) {
   res.render("index");
@@ -70,6 +72,6 @@ app.post("/api/userLegos", function (req, res) {
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
     console.log(`Server listening on: http://localhost:${PORT}`);
-    console.log(process.env);
+    // console.log(process.env);
   });
 });
