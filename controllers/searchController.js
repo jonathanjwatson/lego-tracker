@@ -9,7 +9,6 @@ router.get("/search/:searchTerm", (req, res) => {
   axios
     .get(url)
     .then((response) => {
-      console.log(response.data.results);
       res.render("search-results", {
         searchTerm: req.params.searchTerm,
         legos: response.data.results,

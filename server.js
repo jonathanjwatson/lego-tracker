@@ -72,6 +72,6 @@ app.post("/api/userLegos", function (req, res) {
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
     console.log(`Server listening on: http://localhost:${PORT}`);
-    console.log(process.env);
+    // console.log(process.env);
   });
 });

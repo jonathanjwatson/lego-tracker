@@ -2,7 +2,7 @@ module.exports = function (sequelize, DataTypes) {
   const Lego = sequelize.define("Lego", {
     name: DataTypes.STRING,
     numberOfPieces: DataTypes.INTEGER,
-    setNumber: DataTypes.INTEGER,
+    setNumber: DataTypes.STRING,
     imageURL: DataTypes.STRING,
     quantity: {
       type: DataTypes.INTEGER,
